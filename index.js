@@ -1,7 +1,8 @@
 const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
-const { Cliente, sequelize } = require('./models/Clientes.js');
+const { sequelize } = require('./models/Cliente.js');
+const clienteController = require('./controllers/clienteController');
 
 const app = express();
 const port = 80;
@@ -26,33 +27,4 @@ app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Rotas
-app.get('/', (req, res) => {
-  res.render('cadastro');
-});
-
-app.get('/clientes', async (req, res) => {
-  try {
-    const clientes = await Cliente.findAll();
-    res.json(clientes);
-  } catch (error) {
-    console.error(error);
-    res.status(500).send('<h2>Erro ao buscar os clientes</h2>');
-  }
-});
-
-app.post('/cadastro', async (req, res) => {
-  try {
-    const { nome, cpf, telefone, email, senha } = req.body;
-
-    const clienteExistente = await Cliente.findOne({ where: { cpf } });
-    if (clienteExistente) {
-      return res.send('<h2>Usuário já existe</h2>');
-    }
-
-    await Cliente.create({ nome, cpf, telefone, email, senha });
-    res.send('<h2>Usuário inserido com sucesso!</h2>');
-  } catch (error) {
-    console.error(error);
-    res.status(500).send('<h2>Erro no servidor</h2>');
-  }
-});
+app.use('/', clienteController);
