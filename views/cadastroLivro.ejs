@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Cadastro Livro</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='/stylesheets/cadastroLivro.css'>
+    <script src='main.js'></script>
+</head>
+<body>
+    <div id="header"> <h1>Cadastro de Livro</h1></div>
+    <form action="/cadastroLivro" method="post">
+        <div id="form-container">
+            <div class="input-container">
+                <label for="nomeLivro">Nome do Livro:</label><br>
+                <input type="text" name="nomeLivro" placeholder="Digite o nome do livro...">
+            </div>
+            <div class="input-container">
+                <label for="autor">Nome do Autor:</label><br>
+                <input type="text" name="autor" placeholder="Digite o nome do autor..." >
+            </div>
+            <div class="input-container">
+                <label for="genero">Genero do Livro:</label><br>
+                <input type="text" name="genero" placeholder="Digite o genero do livro..." >
+            </div>
+            <button id="register-button">Cadastrar</button>
+        </div>
+    </form>
+</body>
+</html>
