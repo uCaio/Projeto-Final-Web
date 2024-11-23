@@ -3,6 +3,7 @@ const path = require('path');
 const bodyParser = require('body-parser');
 const { sequelize } = require('./models/Cliente.js');
 const clienteController = require('./controllers/clienteController');
+const livroController = require('./controllers/livroController');
 
 const app = express();
 const port = 80;
@@ -28,3 +29,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Rotas
 app.use('/', clienteController);
+
+app.use('/cadastroLivro', livroController);
+
+app.get('/home', (req, res) => {
+  res.render('home')
+} )
