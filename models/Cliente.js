@@ -1,20 +1,29 @@
-const { Sequelize, DataTypes } = require('sequelize');
-const sequelize = new Sequelize('database_development', 'root', 'admin', {
-  host: 'localhost',
-  dialect: 'mysql', // Pode ser 'postgres', 'sqlite', etc.
-  logging: false,  // Desativa logs no console
-});
+const { Model, DataTypes } = require('sequelize');
 
-const Cliente = sequelize.define('Clientes', {
-  clienteID: { type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true, allowNull: false },
-  nome: { type: DataTypes.STRING, allowNull: false },
-  cpf: { type: DataTypes.STRING, allowNull: false, unique: true },
-  telefone: { type: DataTypes.STRING },
-  email: { type: DataTypes.STRING, unique: true },
-  senha: { type: DataTypes.STRING }
-}, {
-  tableName: 'clientes',  // Usando o nome exato da tabela
-  timestamps: false     // Desabilita o uso de 'createdAt' e 'updatedAt'
-});
+module.exports = (sequelize) => {
+  class Cliente extends Model {
+    static associate(models) {
+      // Um cliente pode ter muitos pedidos
+      Cliente.hasMany(models.Pedido, { foreignKey: 'clienteID' });
+    }
+  }
 
-module.exports = { Cliente, sequelize };
+  Cliente.init({
+    clienteID: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      autoIncrement: true,
+      allowNull: false,
+    },
+    nome: DataTypes.STRING,
+    cpf: DataTypes.STRING,
+    telefone: DataTypes.STRING,
+    email: DataTypes.STRING,
+    senha: DataTypes.STRING,
+  }, {
+    sequelize,
+    modelName: 'Cliente',
+  });
+
+  return Cliente;
+};
