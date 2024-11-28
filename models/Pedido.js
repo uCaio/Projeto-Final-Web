@@ -3,30 +3,47 @@ const { Model, DataTypes } = require('sequelize');
 module.exports = (sequelize) => {
   class Pedido extends Model {
     static associate(models) {
-      // Um pedido pertence a um cliente
       Pedido.belongsTo(models.Cliente, { foreignKey: 'clienteID' });
-
-      // Um pedido pertence a um livro
       Pedido.belongsTo(models.Livro, { foreignKey: 'livroID' });
     }
   }
 
-  Pedido.init({
-    pedidoID: {
-      type: DataTypes.INTEGER,
-      primaryKey: true,
-      autoIncrement: true,
-      allowNull: false,
+  Pedido.init(
+    {
+      pedidoID: {
+        type: DataTypes.INTEGER,
+        primaryKey: true,
+        autoIncrement: true,
+        allowNull: false,
+      },
+      clienteID: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        references: {
+          model: 'clientes',
+          key: 'clienteID',
+        },
+      },
+      livroID: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        references: {
+          model: 'livros',
+          key: 'livroID',
+        },
+      },
+      dataPedido: {
+        type: DataTypes.DATE,
+        defaultValue: DataTypes.NOW,
+      },
     },
-    clienteID: DataTypes.INTEGER,
-    livroID: DataTypes.INTEGER,
-    dataPedido: DataTypes.DATE,
-    quantidade: DataTypes.INTEGER,
-    preco: DataTypes.DECIMAL(10, 2),
-  }, {
-    sequelize,
-    modelName: 'Pedido',
-  });
+    {
+      sequelize,
+      modelName: 'Pedido',
+      tableName: 'pedidos',
+      timestamps: false,
+    }
+  );
 
   return Pedido;
 };

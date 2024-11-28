@@ -1,38 +1,27 @@
-const { Cliente } = require('../models/Cliente.js');
-const { Router } = require('express');
+const { Cliente } = require('../models/db').models;
 
-const roteador = Router();
 
-// Rotas
-roteador.get('/', (req, res) => {
+// Renderizar a página de cadastro
+const exibirCadastroCliente = (req, res) => {
   res.render('cadastro');
-});
+};
 
-roteador.get('/clientes', async (req, res) => {
-  try {
-    const clientes = await Cliente.findAll();
-    res.json(clientes);
-  } catch (error) {
-    console.error(error);
-    res.status(500).send('<h2>Erro ao buscar os clientes</h2>');
-  }
-});
-
-roteador.post('/cadastro', async (req, res) => {
+// Cadastrar um cliente
+const cadastrarCliente = async (req, res) => {
   try {
     const { nome, cpf, telefone, email, senha } = req.body;
-
     const clienteExistente = await Cliente.findOne({ where: { cpf } });
+
     if (clienteExistente) {
-      return res.send('<h2>Usuário já existe</h2>');
+      return res.send('<h2>Cliente já existe!</h2>');
     }
 
     await Cliente.create({ nome, cpf, telefone, email, senha });
-    res.send('<h2>Cadastro concluído com sucesso!!</h2>');
+    res.send('<h2>Cliente cadastrado com sucesso!</h2>');
   } catch (error) {
     console.error(error);
-    res.status(500).send('<h2>Erro no servidor</h2>');
+    res.status(500).send('<h2>Erro no servidor!</h2>');
   }
-});
+};
 
-module.exports = roteador;
+module.exports = { exibirCadastroCliente, cadastrarCliente};
