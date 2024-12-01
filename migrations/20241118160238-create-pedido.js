@@ -17,34 +17,26 @@ module.exports = {
           model: 'clientes',
           key: 'clienteID'
         },
-        onDelete: 'CASCADE', 
+        onDelete: 'CASCADE',
         onUpdate: 'CASCADE'
       },
-      livro: {
+      livroID: {
         type: Sequelize.INTEGER,
         primaryKey: false,
         references: {
           model: 'livros',
           key: 'livroID',
         },
-        onDelete: 'CASCADE', 
+        onDelete: 'CASCADE',
         onUpdate: 'CASCADE'
       },
-      createdAt: {
-        type: Sequelize.DATE,
-        allowNull: false,
-      },
-      updatedAt: {
+      dataPedido: {
         type: Sequelize.DATE,
         allowNull: false,
       },
       quantidade: {
         type: Sequelize.INTEGER,
-        allowNull: false
-      },
-      preço: {
-        type: Sequelize.DECIMAL,
-        allowNull: false
+        allowNull: false,
       }
     })
   },

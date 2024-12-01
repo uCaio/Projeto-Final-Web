@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lista de Livros</title>
+  <link rel="stylesheet" href="/stylesheets/listaLivros.css">
+</head>
+<body>
+  <header class="header">
+    <h1>Lista de livros</h1>
+  </header>
+
+  <div class="book-list">
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nome Livro</th>
+          <th>Autor</th>
+          <th>Gênero</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Loop pelos livros para preencher a tabela -->
+        <% livros.forEach(livro => { %>
+          <tr>
+            <td><%= livro.livroID %></td>
+            <td><%= livro.nome %></td>
+            <td><%= livro.autor %></td>
+            <td><%= livro.genero %></td>
+            <td>
+              <a href="/livros/cadastroLivro/editar/<%= livro.livroID %>" class="edit-btn">Editar</a>
+              <a href="/livros/excluir/<%= livro.livroID %>" class="delete-btn">Excluir</a>
+            </td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </div>
+
+  <footer class="footer">
+    <p>© 2024 Biblioteca</p>
+  </footer>
+</body>
+</html>

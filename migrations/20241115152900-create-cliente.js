@@ -16,7 +16,8 @@ module.exports = {
       },
       cpf: {
         type: Sequelize.STRING,
-        allowNull: false
+        allowNull: false,
+        unique: true
       },
       telefone: {
         type: Sequelize.STRING,
@@ -32,7 +33,7 @@ module.exports = {
       }
    })
   },
-
+  
   async down (queryInterface, Sequelize) {
     await queryInterface.dropTable('clientes')
   }

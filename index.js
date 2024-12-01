@@ -1,7 +1,8 @@
 const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
-const { sequelize} = require('./models/db');
+const { sequelize } = require('./models/db');
+const methodOverride = require('method-override');
 const app = express();
 const port = 80;
 
@@ -9,6 +10,8 @@ const port = 80;
 const clienteRoutes = require('./routes/clienteRoutes');
 const livroRoutes = require('./routes/livroRoutes');
 const homeRoutes = require('./routes/homeRoutes');
+const pedidoRoutes = require('./routes/pedidoRoutes');
+
 
 // Sincroniza o banco de dados e inicia o servidor
 sequelize
@@ -29,8 +32,11 @@ app.set('views', path.join(__dirname, 'views'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(methodOverride('_method'));
 
 // Conectar as rotas
 app.use('/', homeRoutes);
 app.use('/clientes', clienteRoutes);
 app.use('/livros', livroRoutes);
+app.use('/pedidos', pedidoRoutes);
+

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lista de Clientes</title>
+  <link rel="stylesheet" href="/stylesheets/listaClientes.css">
+</head>
+<body>
+  <header class="header">
+    <h1>Lista de clientes</h1>
+  </header>
+
+  <div class="client-list">
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nome</th>
+          <th>Email</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Loop pelos clientes para preencher a tabela -->
+        <% clientes.forEach(cliente => { %>
+          <tr>
+            <td><%= cliente.clienteID %></td>
+            <td><%= cliente.nome %></td>
+            <td><%= cliente.email %></td>
+            <td>
+              <a href="/clientes/cadastro/editar/<%= cliente.clienteID %>" class="edit-btn">Editar</a>
+              <a href="/clientes/excluir/<%= cliente.clienteID %>" class="delete-btn">Excluir</a>
+            </td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </div>
+  <footer class="footer">
+    <p>© 2024 Biblioteca</p>
+  </footer>
+</body>
+</html>
