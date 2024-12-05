@@ -18,14 +18,56 @@ const obterPedido = async (req, res) => {
         }
         
         await Pedido.create({ clienteID, livroID, quantidade, dataPedido });
-        res.send('<h2>Pedido concluído com sucesso!</h2>')
+        res.redirect('/livro/listaLivros');
     } catch (error) {
         console.error( error);
-        res.status(400).send('Erro no servidor!')
+        res.status(400).send('Erro ao criar o pedido.!')
     }
-    
-   
 }
 
+const editarPedido = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const { clienteID, livroID, quantidade, dataPedido } = req.body;
+    
+        const pedido = await Pedido.findByPk(id);
+        if (!pedido) {
+            return res.status(404).send('<h2>Pedido não encontrado</h2>');
+        }
+        await Pedido.update(
+            { clienteID, livroID, quantidade, dataPedido },
+            {where: {pedidoID: id}}
+        );
+        res.redirect('/pedidos/listaPedido')
+    } catch (error) {
+        res.status(500).send('<h2>Erro ao atualizar o pedido.</h2>')
+    }
+}
 
-module.exports = { exibirPedido, obterPedido};
+const listarPedidos = async (req, res) => {
+    try {
+        const pedidos = await Pedido.findAll();
+        res.render('listaPedidos', { pedidos });
+    } catch (error) {
+        console.log(error);
+        res.status(500).sebd("<h2>Erro ao carregar lista de pedidos</h2>")
+    }
+}
+
+const deletarPedido = async (req, res) => {
+    try {
+      const { id } = req.params;
+      const pedido = await Pedido.findByPk(id);
+      if (!pedido) {
+        return res.status(404).send('<h2>Pedido não encontrado.</h2>');
+      }
+      await Pedido.destroy({ where: { livroID: id } });
+      res.redirect('/pedidos/listaPedido');
+  
+    } catch (error) {
+      console.log(error);
+      res.status(500).send('<h2>Erro ao deletar pedido.</h2>')
+    }
+  }
+
+module.exports = { exibirPedido, obterPedido, editarPedido ,listarPedidos, deletarPedido};

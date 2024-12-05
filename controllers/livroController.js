@@ -32,10 +32,7 @@ const editarLivro = async (req, res) => {
     if (!livro) {
       return res.status(404).send('<h2>Livro não encontrado.</h2>')
     }
-    await Livro.update(
-      { nomeLivro, autor, genero },
-      { where: { livroID: id } }
-    );
+    await Livro.update({ nomeLivro, autor, genero },{ where: { livroID: id } });
     res.redirect('/livros/listaLivros');
   } catch (error) {
     console.log(error);
@@ -52,4 +49,20 @@ const listarLivro = async (req, res) => {
   }
 }
 
-module.exports = { exibirCadastroLivro, cadastrarLivro, editarLivro, listarLivro };
+const deletarLivro = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const livro = await Livro.findByPk(id);
+    if (!livro) {
+      return res.status(404).send('<h2>Livro não encontrado.</h2>');
+    }
+    await Livro.destroy({ where: { livroID: id } });
+    res.redirect('/livros/listaLivros');
+
+  } catch (error) {
+    console.log(error);
+    res.status(500).send('<h2>Erro ao deletar livro.</h2>')
+  }
+}
+
+module.exports = { exibirCadastroLivro, cadastrarLivro, editarLivro, listarLivro, deletarLivro };

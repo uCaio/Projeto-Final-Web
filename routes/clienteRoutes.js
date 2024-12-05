@@ -9,8 +9,6 @@ router.get('/cadastro', clienteController.exibirCadastroCliente);
 // Rota para cadastrar um cliente
 router.post('/cadastro', clienteController.cadastrarCliente);
 
-router.patch('/cadastro', clienteController.editarCliente);
-
 router.get('/listaClientes', clienteController.listarClientes);
 
 router.get('/cadastro/editar/:id', async (req, res) => {
@@ -23,9 +21,11 @@ router.get('/cadastro/editar/:id', async (req, res) => {
       res.render('editarCadastro', { cliente }); // Renderiza o formulário com os dados do cliente
     } catch (error) {
       console.error(error);
-      res.status(500).send('Erro ao carregar cliente.');
+      res.status(500).send('Erro ao editar cliente.');
     }
 });
 
 router.patch('/cadastro/editar/:id', clienteController.editarCliente);
+
+router.delete('/deletar/:id', clienteController.deletarCliente);
 module.exports = router;

@@ -48,13 +48,27 @@ const editarCliente = async (req, res) => {
 
 const listarClientes = async (req, res) => {
   try {
-    const clientes = await Cliente.findAll(); // Busca todos os clientes
-    res.render('listaClientes', { clientes }); // Envia para a página EJS
+    const clientes = await Cliente.findAll();
+    res.render('listaClientes', { clientes }); 
   } catch (error) {
     console.error(error);
     res.status(500).send('<h2>Erro ao carregar lista de clientes.</h2>');
   }
 };
 
+const deletarCliente = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const cliente = await Cliente.findByPk(id);
+    if (!cliente) {
+      return res.status(404).send('<h2>Cliente não encontrado.</h2>');
+    }
+    await Cliente.destroy({ where: { clienteID: id } });
+    res.redirect('/clientes/listaClientes');
 
-module.exports = { exibirCadastroCliente, cadastrarCliente, editarCliente, listarClientes};
+  } catch (error) {
+    console.log(error);
+    res.status(500).send('<h2>Erro ao deletar cliente.</h2>')
+  }
+}
+module.exports = { exibirCadastroCliente, cadastrarCliente, editarCliente, listarClientes, deletarCliente};

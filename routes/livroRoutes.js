@@ -26,4 +26,6 @@ router.get('/cadastroLivro/editar/:id', async (req, res) => {
 });
 
 router.patch('/cadastroLivro/editar/:id', livroController.editarLivro);
+
+router.delete('/deletar/:id', livroController.deletarLivro)
 module.exports = router;

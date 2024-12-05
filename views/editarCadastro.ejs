@@ -18,15 +18,15 @@
       </div>
       <div class="input-container">
         <label for="telefone">Telefone:</label>
-        <input type="text" name="telefone" id="telefone" value="<%= cliente.telefone %>" required>
+        <input type="text" name="telefone" id="telefone" value="<%= cliente.telefone %>" required placeholder="Digite um novo telefone...">
       </div>
       <div class="input-container">
         <label for="email">Email:</label>
-        <input type="email" name="email" id="email" value="<%= cliente.email %>" required>
+        <input type="email" name="email" id="email" value="<%= cliente.email %>" required placeholder="Digite um novo email...">
       </div>
       <div class="input-container">
         <label for="senha">Senha:</label>
-        <input type="password" name="senha" id="senha" placeholder="Digite a nova senha">
+        <input type="password" name="senha" id="senha" value="<%= cliente.senha %>" required placeholder="Digite uma nova senha...">
       </div>
       <button id="register-button">Salvar Alterações</button>
     </div>

@@ -4,35 +4,35 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Lista de Livros</title>
-  <link rel="stylesheet" href="/stylesheets/listaLivros.css">
+  <link rel="stylesheet" href="/stylesheets/listaPedidos.css">
 </head>
 <body>
   <header class="header">
-    <h1>Lista de livros</h1>
+    <h1>Lista de pedidos</h1>
   </header>
 
-  <div class="book-list">
+  <div class="pedidos-list">
     <table>
       <thead>
         <tr>
-          <th>ID</th>
-          <th>Nome Livro</th>
-          <th>Autor</th>
-          <th>Gênero</th>
+          <th>ID Cliente</th>
+          <th>ID Livro</th>
+          <th>Quantidade</th>
+          <th>Data Pedido</th>
           <th>Ações</th>
         </tr>
       </thead>
       <tbody>
         <!-- Loop pelos livros para preencher a tabela -->
-        <% livros.forEach(livro => { %>
+        <% pedidos.forEach(pedido => { %>
           <tr>
-            <td><%= livro.livroID %></td>
-            <td><%= livro.nome %></td>
-            <td><%= livro.autor %></td>
-            <td><%= livro.genero %></td>
+            <td><%= pedido.clienteID %></td>
+            <td><%= pedido.livroID %></td>
+            <td><%= pedido.quantidade %></td>
+            <td><%= pedido.dataPedido %></td>
             <td>
-              <a href="/livros/cadastroLivro/editar/<%= livro.livroID %>" class="edit-btn">Editar</a>
-              <form action="/livros/deletar/<%= livro.livroID %>?_method=DELETE" method="POST" style="display:inline;">
+              <a href="/pedidos/obterPedido/editar/<%= pedido.clienteID %>" class="edit-btn">Editar</a>
+              <form action="/pedido/deletar/<%= pedido.clienteID %>?_method=DELETE" method="POST" style="display:inline;">
                 <button type="submit" class="delete-btn">Excluir</button>
               </form>
             </td>
@@ -41,7 +41,6 @@
       </tbody>
     </table>
   </div>
-
   <footer class="footer">
     <p>© 2024 Biblioteca</p>
   </footer>

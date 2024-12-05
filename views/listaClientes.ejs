@@ -30,7 +30,9 @@
             <td><%= cliente.email %></td>
             <td>
               <a href="/clientes/cadastro/editar/<%= cliente.clienteID %>" class="edit-btn">Editar</a>
-              <a href="/clientes/excluir/<%= cliente.clienteID %>" class="delete-btn">Excluir</a>
+              <form action="/clientes/deletar/<%= cliente.clienteID %>?_method=DELETE" method="POST" style="display:inline;">
+                <button type="submit" class="delete-btn">Excluir</button>
+              </form>
             </td>
           </tr>
         <% }) %>

@@ -10,29 +10,29 @@
 </head>
 <body>
     <header class="header">
-        <h1>Cadastro clientes</h1>
+        <h1>Cadastro Cliente</h1>
       </header>
     <form action="/clientes/cadastro" method="POST">
         <div id="form-container">
             <div class="input-container">
                 <label for="nome">Nome:</label><br>
-                <input type="text" name="nome" placeholder="Digite seu nome...">
+                <input type="text" name="nome" placeholder="Digite seu nome..." required>
             </div>
             <div class="input-container">
                 <label for="cpf">CPF:</label><br>
-                <input type="text" name="cpf" placeholder="Digite seu cpf..." >
+                <input type="text" name="cpf" placeholder="Digite seu cpf..." required >
             </div>
             <div class="input-container">
                 <label for="telefone">Telefone:</label><br>
-                <input type="text" name="telefone" placeholder="Digite seu telefone..." >
+                <input type="text" name="telefone" placeholder="Digite seu telefone..." required >
             </div>
             <div class="input-container">
                 <label for="email">Email:</label><br>
-                <input type="text" name="email" placeholder="Digite seu email...">
+                <input type="text" name="email" placeholder="Digite seu email..." required>
             </div>
             <div class="input-container">
                 <label for="senha">Senha:</label><br>
-                <input type="password" name="senha" placeholder="Digite sua senha...">
+                <input type="password" name="senha" placeholder="Digite sua senha..." required>
             </div>
             <button id="register-button">Enviar</button>
         </div>
