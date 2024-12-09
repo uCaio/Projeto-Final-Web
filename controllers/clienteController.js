@@ -17,7 +17,7 @@ const cadastrarCliente = async (req, res) => {
     }
 
     await Cliente.create({ nome, cpf, telefone, email, senha });
-    res.send('<h2>Cliente cadastrado com sucesso!</h2>');
+    res.redirect('/clientes/listaClientes');
   } catch (error) {
     console.error(error);
     res.status(500).send('<h2>Erro no servidor!</h2>');

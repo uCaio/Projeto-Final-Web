@@ -16,7 +16,7 @@ const cadastrarLivro = async (req, res) => {
     }
 
     await Livro.create({ nome: nomeLivro, autor, genero });
-    res.send('<h2>Livro cadastrado com sucesso!</h2>');
+    res.redirect('/livros/listaLivros');
   } catch (error) {
     console.error(error);
     res.status(500).send('<h2>Erro no servidor!</h2>');

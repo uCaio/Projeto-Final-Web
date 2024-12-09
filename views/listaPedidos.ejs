@@ -15,6 +15,7 @@
     <table>
       <thead>
         <tr>
+          <th>ID</th>
           <th>ID Cliente</th>
           <th>ID Livro</th>
           <th>Quantidade</th>
@@ -26,13 +27,14 @@
         <!-- Loop pelos livros para preencher a tabela -->
         <% pedidos.forEach(pedido => { %>
           <tr>
+            <td><%= pedido.pedidoID %></td>
             <td><%= pedido.clienteID %></td>
             <td><%= pedido.livroID %></td>
             <td><%= pedido.quantidade %></td>
             <td><%= pedido.dataPedido %></td>
             <td>
-              <a href="/pedidos/obterPedido/editar/<%= pedido.clienteID %>" class="edit-btn">Editar</a>
-              <form action="/pedido/deletar/<%= pedido.clienteID %>?_method=DELETE" method="POST" style="display:inline;">
+              <a href="/pedidos/obterPedido/editar/<%= pedido.pedidoID %>" class="edit-btn">Editar</a>
+              <form action="/pedidos/deletar/<%= pedido.pedidoID %>?_method=DELETE" method="POST" style="display:inline;">
                 <button type="submit" class="delete-btn">Excluir</button>
               </form>
             </td>
