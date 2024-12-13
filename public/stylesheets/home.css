@@ -1,0 +1,125 @@
+/* styles.css */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #e8e2e2;
+}
+
+.header {
+  background-color: #2C3E50;
+  color: white;
+  display: flex;
+  flex-wrap: wrap; /* Permite quebrar linha em telas menores */
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+}
+
+.logo {
+  font-size: 1.5em;
+}
+
+.search-bar {
+  width: 100%; /* Largura total para dispositivos móveis */
+  max-width: 300px; /* Limita o tamanho em dispositivos maiores */
+  margin: 10px 0;
+  padding: 5px;
+}
+
+.menu {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+}
+
+.categories {
+  background-color: #34495E;
+  color: white;
+  display: flex;
+  flex-wrap: wrap; /* Ajusta os botões para caberem em telas menores */
+  padding: 10px;
+  gap: 15px;
+  justify-content: center;
+  overflow-x: auto; /* Permite rolagem horizontal em telas muito pequenas */
+}
+
+.category-btn {
+  background: #1ABC9C;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  flex: 1; /* Faz com que os botões se ajustem ao espaço disponível */
+  text-align: center;
+  max-width: 150px; /* Limita o tamanho em telas maiores */
+}
+
+.category-btn:hover {
+  background: #16A085;
+}
+
+.content {
+  padding: 20px;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap; /* Permite que os itens se ajustem para baixo em telas menores */
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.item {
+  background-color: #E74C3C;
+  flex: 1 1 calc(50% - 10px); /* Define largura de 50% menos o gap */
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-align: center;
+}
+
+.footer {
+  background-color: #2C3E50;
+  color: white;
+  text-align: center;
+  padding: 10px;
+}
+
+a {
+  text-decoration: none;
+}
+
+/* Media Queries para dispositivos menores */
+@media (max-width: 480px) {
+  .header {
+    flex-direction: column; /* Alinha itens verticalmente */
+    text-align: center;
+  }
+
+  .search-bar {
+    margin: 10px auto; /* Centraliza a barra de busca */
+  }
+
+  .categories {
+    flex-direction: column; /* Botões em coluna */
+  }
+
+  .category-btn {
+    width: 100%; /* Botões ocupam toda a largura */
+    max-width: none;
+  }
+
+  .row {
+    flex-direction: column; /* Itens em coluna */
+  }
+
+  .item {
+    flex: 1 1 100%; /* Cada item ocupa 100% da largura */
+    margin-bottom: 10px;
+  }
+}

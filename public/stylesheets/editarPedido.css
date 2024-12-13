@@ -1,0 +1,94 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background-color: #e8e2e2;
+}
+
+.header {
+  background-color: #2C3E50;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  font-size: 18px; /* Texto ajustado para smartphones */
+}
+
+#form-container {
+  display: block;
+  width: 90%; /* Largura fluida para telas menores */
+  max-width: 400px; /* Limita o tamanho em dispositivos maiores */
+  height: auto; /* Altura flexível */
+  margin: 20px auto;
+  padding: 15px;
+  border: 2px solid #000;
+  border-radius: 5px;
+  background-color: #fff; /* Fundo branco para contraste */
+}
+
+.input-container {
+  margin: 20px 0; /* Espaçamento entre inputs */
+  text-align: center; /* Centraliza inputs */
+}
+
+input[type=text],
+input[type=number],
+input[type=date],
+input[type=password],
+input[type=email] {
+  width: 100%; /* Largura total para responsividade */
+  max-width: 300px; /* Limita tamanho em telas maiores */
+  height: 40px; /* Altura maior para toque */
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  padding: 8px; /* Espaçamento interno */
+  font-size: 16px; /* Fonte ajustada para legibilidade */
+  background-color: #e8e2e2;
+}
+
+#register-button {
+  width: 100%; /* Botão ocupa toda a largura disponível */
+  max-width: 150px; /* Limita tamanho em telas maiores */
+  height: 45px;
+  margin: 20px auto; /* Centraliza botão */
+  display: block;
+  border: 1px solid;
+  border-radius: 5px;
+  background-color: #2C3E50;
+  color: white;
+  cursor: pointer;
+  font-size: 16px; /* Texto ajustado */
+}
+
+#register-button:hover {
+  background-color: #092574;
+}
+
+/* Media Queries para smartphones (telas menores que 480px) */
+@media (max-width: 480px) {
+  .header {
+    font-size: 16px; /* Texto menor */
+    padding: 10px;
+  }
+
+  #form-container {
+    padding: 10px; /* Reduz o padding interno */
+  }
+
+  input[type=text],
+  input[type=number],
+  input[type=date],
+  input[type=password],
+  input[type=email] {
+    height: 35px; /* Altura reduzida para inputs */
+    font-size: 14px; /* Texto menor */
+  }
+
+  #register-button {
+    height: 40px; /* Botão mais compacto */
+    font-size: 14px; /* Texto menor */
+  }
+}

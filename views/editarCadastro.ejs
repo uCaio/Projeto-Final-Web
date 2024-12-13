@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Editar Cliente</title>
+  <link rel="stylesheet" href="/stylesheets/editarcadastro.css">
+</head>
+<body>
+  <header class="header">
+    <h1>Editar cadastro</h1>
+  </header>
+  <form action="/clientes/cadastro/editar/<%= cliente.clienteID %>?_method=PATCH" method="POST">
+    <div id="form-container">
+      <div class="input-container">
+        <label for="nome">Nome:</label>
+        <input type="text" name="nome" id="nome" value="<%= cliente.nome %>" required>
+      </div>
+      <div class="input-container">
+        <label for="telefone">Telefone:</label>
+        <input type="text" name="telefone" id="telefone" value="<%= cliente.telefone %>" required placeholder="Digite um novo telefone...">
+      </div>
+      <div class="input-container">
+        <label for="email">Email:</label>
+        <input type="email" name="email" id="email" value="<%= cliente.email %>" required placeholder="Digite um novo email...">
+      </div>
+      <div class="input-container">
+        <label for="senha">Senha:</label>
+        <input type="password" name="senha" id="senha" value="<%= cliente.senha %>" required placeholder="Digite uma nova senha...">
+      </div>
+      <button id="register-button">Salvar Alterações</button>
+    </div>
+  </form>
+</body>
+</html>

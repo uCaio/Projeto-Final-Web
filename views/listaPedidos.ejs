@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lista de Livros</title>
+  <link rel="stylesheet" href="/stylesheets/listaPedidos.css">
+</head>
+<body>
+  <header class="header">
+    <h1>Lista de pedidos</h1>
+  </header>
+
+  <div class="pedidos-list">
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>ID Cliente</th>
+          <th>ID Livro</th>
+          <th>Quantidade</th>
+          <th>Data Pedido</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Loop pelos livros para preencher a tabela -->
+        <% pedidos.forEach(pedido => { %>
+          <tr>
+            <td><%= pedido.pedidoID %></td>
+            <td><%= pedido.clienteID %></td>
+            <td><%= pedido.livroID %></td>
+            <td><%= pedido.quantidade %></td>
+            <td><%= pedido.dataPedido %></td>
+            <td>
+              <a href="/pedidos/obterPedido/editar/<%= pedido.pedidoID %>" class="edit-btn">Editar</a>
+              <form action="/pedidos/deletar/<%= pedido.pedidoID %>?_method=DELETE" method="POST" style="display:inline;">
+                <button type="submit" class="delete-btn">Excluir</button>
+              </form>
+            </td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </div>
+  <footer class="footer">
+    <p>© 2024 Biblioteca</p>
+  </footer>
+</body>
+</html>

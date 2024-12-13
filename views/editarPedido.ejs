@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Cadastro Livro</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='/stylesheets/editarPedido.css'>
+    <script src='main.js'></script>
+</head>
+<body>
+    <header class="header">
+        <h1>Editar Pedido</h1>
+    </header>
+      <form action="/pedidos/obterPedido/editar/<%= pedido.pedidoID %>?_method=PATCH" method="POST">
+        <div id="form-container">
+          <div class="input-container">
+            <label for="livroID">ID do Livro:</label>
+            <input type="text" id="livroID" name="livroID" required placeholder="Digite o ID do Livro...">
+          </div>
+          <div class="input-container">
+            <label for="quantidade">Quantidade:</label>
+            <input type="number" id="quantidade" name="quantidade" min="1" required placeholder="Digite a quantidade...">
+          </div>
+          <div class="input-container">
+            <label for="dataPedido">Data do Pedido:</label>
+            <input type="date" id="dataPedido" name="dataPedido" required>
+          </div>
+          <div class="input-container">
+            <button type="submit" id="register-button">Realizar Pedido</button>
+          </div>
+        </div>
+    </form>
+</body>
+</html>

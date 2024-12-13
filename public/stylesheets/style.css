@@ -1,0 +1,95 @@
+/* Geral */
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+#header {
+  width: 100%;
+  height: 100%;
+  margin: 20px -10px;
+  text-align: center;
+}
+
+#form-container {
+  display: block;
+  width: 550px;
+  height: 500px;
+  margin: 35px auto;
+  border: 2px solid #000;
+  border-radius: 5px;
+}
+
+.input-container {
+  margin: 30px 120px;
+}
+
+input[type=text],
+input[type=password] {
+  width: 300px;
+  height: 30px;
+  border-radius: 3px;
+  padding: 5px;
+  background-color: #f0f0f0;
+}
+
+#register-button {
+  width: 80px;
+  height: 40px;
+  margin: 0 225px;
+  border: 1px solid;
+  border-radius: 3px;
+}
+
+#register-button:hover {
+  background-color: #092574;
+  color: #fff;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+  #form-container {
+    width: 90%; /* Ajusta a largura do formulário */
+    height: auto; /* Ajusta a altura para se adequar ao conteúdo */
+    margin: 20px auto; /* Ajusta a margem */
+  }
+
+  .input-container {
+    margin: 20px 50px; /* Ajusta a margem para telas menores */
+  }
+
+  input[type=text],
+  input[type=password] {
+    width: 100%; /* Faz com que os campos ocupem toda a largura disponível */
+    height: 40px;
+  }
+
+  #register-button {
+    width: 100%; /* Faz o botão ocupar toda a largura disponível */
+    margin: 20px 0;
+  }
+}
+
+@media (max-width: 480px) {
+  #form-container {
+    padding: 10px; /* Reduz o padding do formulário */
+  }
+
+  .input-container {
+    margin: 15px 10px; /* Diminui ainda mais a margem */
+  }
+
+  input[type=text],
+  input[type=password] {
+    height: 40px; /* Ajusta a altura dos campos */
+    padding: 10px; /* Aumenta o padding para melhor usabilidade */
+  }
+
+  #register-button {
+    width: 100%;
+    height: 45px; /* Aumenta a altura do botão */
+    margin: 15px 0;
+  }
+}

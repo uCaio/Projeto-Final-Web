@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Realizar Pedido</title>
+  <link rel="stylesheet" href="/stylesheets/pedidoCliente.css">
+</head>
+<body>
+  <header class="header">
+    <h1>Realizar Pedido</h1>
+  </header>
+
+  <div class="order-form">
+    <form action="/pedidos/obterPedido" method="post">
+      <div class="form-group">
+        <label for="clienteID">ID do Cliente:</label>
+        <input type="text" id="clienteID" name="clienteID" required>
+      </div>
+      <div class="form-group">
+        <label for="livroID">ID do Livro:</label>
+        <input type="text" id="livroID" name="livroID" required>
+      </div>
+      <div class="form-group">
+        <label for="quantidade">Quantidade:</label>
+        <input type="number" id="quantidade" name="quantidade" min="1" required>
+      </div>
+      <div class="form-group">
+        <label for="dataPedido">Data do Pedido:</label>
+        <input type="date" id="dataPedido" name="dataPedido" required>
+      </div>
+      <div class="form-group">
+        <button type="submit" class="submit-btn">Realizar Pedido</button>
+      </div>
+    </form>
+  </div>
+
+  <footer class="footer">
+    <p>© 2024 Biblioteca</p>
+  </footer>
+</body>
+</html>

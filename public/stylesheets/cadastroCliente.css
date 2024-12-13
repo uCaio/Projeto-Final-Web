@@ -1,0 +1,85 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background-color: #e8e2e2;
+}
+
+.header {
+  background-color: #2C3E50;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  font-size: 18px; /* Ajuste de tamanho de texto para smartphones */
+}
+
+#form-container {
+  width: 90%; /* Ocupa 90% da largura da tela */
+  max-width: 400px; /* Limita a largura máxima */
+  margin: 20px auto;
+  padding: 15px;
+  border: 2px solid #000;
+  border-radius: 5px;
+  background-color: #fff;
+}
+
+.input-container {
+  margin: 15px 0; /* Espaçamento entre os campos */
+  text-align: center; /* Centraliza os inputs horizontalmente */
+}
+
+input[type=text],
+input[type=password],
+input[type=email] {
+  width: 100%; /* Ocupa toda a largura do contêiner */
+  height: 40px; /* Altura maior para facilitar o toque */
+  border-radius: 5px;
+  background-color: #e8e2e2;
+  border: 1px solid #ccc;
+  padding: 8px; /* Espaçamento interno */
+  font-size: 16px; /* Tamanho maior para legibilidade */
+}
+
+#register-button {
+  width: 100%; /* Ocupa toda a largura disponível */
+  height: 45px;
+  margin: 20px 0; /* Espaçamento acima e abaixo */
+  border: 1px solid;
+  border-radius: 5px;
+  background-color: #2C3E50;
+  color: white;
+  cursor: pointer;
+  font-size: 16px; /* Tamanho maior para facilitar leitura */
+}
+
+#register-button:hover {
+  background-color: #092574;
+}
+
+/* Media Queries para smartphones (telas menores que 480px) */
+@media (max-width: 480px) {
+  .header {
+    font-size: 16px; /* Texto menor para se ajustar */
+    padding: 10px;
+  }
+
+  #form-container {
+    padding: 10px; /* Reduz o padding interno */
+  }
+
+  input[type=text],
+  input[type=password],
+  input[type=email] {
+    height: 35px; /* Reduz altura dos inputs */
+    font-size: 14px; /* Texto menor */
+  }
+
+  #register-button {
+    height: 40px; /* Botão mais compacto */
+    font-size: 14px; /* Texto menor no botão */
+  }
+}
